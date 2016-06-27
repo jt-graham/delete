@@ -1,0 +1,70 @@
+<h4>Name: <%= @lender.first_name.capitalize %> <%= @lender.last_name.capitalize %></h4>
+<h4>Account Balance: $ <%= @lender.money %> </h4>
+
+<h3>List of people in need of help:</h3>
+<table class="table table-stripped table-hover">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Need Money For</th>
+			<th>Reason for Loan</th>
+			<th>Amount Needed</th>
+			<th>Amount Raised</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @borrowers.each do |borrower| %>
+		<% if borrower.need != borrower.money %>
+		<tr>
+			<td><%= borrower.first_name.capitalize %> <%= borrower.last_name.capitalize %></td>
+			<td><%= borrower.purpose %></td>
+			<td><%= borrower.description %></td>
+			<td>$ <%= borrower.need %></td>
+			<td>$ <%= borrower.money %></td>
+			<td>
+			<% if @lender.money > 0 %>
+				<form action="<%= lend_money_path borrower.id %>" method="post">
+					<% @money = nil %>
+					<% if @lender.money > borrower.need - borrower.money %>
+						<% @money = borrower.need - borrower.money %>
+					<% else %>
+						<% @money = @lender.money %>
+					<% end %>
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<input type="number" name="amount" min="1" max="<%= @money %>">
+					<input class="btn-success" type="submit" value="Lend">
+				</form>
+			<% end %>
+			<% end %>
+			</td> 
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<!-- people lender has lent too -->
+<h2>List of people you have lent money to:</h2>
+<table class="table table-stripped table-hover">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Need Money For</th>
+			<th>Reason for Loan</th>
+			<th>Amount Needed</th>
+			<th>Amount Raised</th>
+			<th>Amount Lent</th>
+		</tr>
+	</thead>
+	<tbody class="borrowers">
+	<% @lendees.each do |lend| %>
+		<tr>
+			<td><%= lend.first_name.capitalize %> <%= lend.last_name.capitalize %></td>
+			<td><%= lend.purpose %></td>
+			<td><%= lend.description %></td>
+			<td>$ <%= lend.need %></td>
+			<td>$ <%= lend.money %></td>
+			<td>$ <%= lend.amount %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

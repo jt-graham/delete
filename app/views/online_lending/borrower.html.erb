@@ -1,0 +1,29 @@
+
+<h4>Name: <%= @borrower.first_name.capitalize %> <%= @borrower.last_name.capitalize %></h4>
+<h4>Amount Needed: $ <%= @borrower.need %></h4>
+<h4>Amount Raised: $ <%= @borrower.money %></h4>
+
+<br>
+<br>
+
+<h3>List of people who lent you money:</h3>
+<table class="table table-stripped table-hover">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Amount Lent</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% if @lenders %>
+		<% @lenders.each do |lender| %>
+		<tr>
+			<td><%= lender.first_name.capitalize %> <%= lender.last_name.capitalize %></td>
+			<td><%= lender.email %></td>
+			<td>$ <%= lender.amount %></td>
+		</tr>
+		<% end %>
+	<% end %>
+	</tbody>
+</table>

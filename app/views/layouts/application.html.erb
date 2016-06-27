@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BeltTest</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class='container'>
+
+<!-- navigation if no user session -->
+<% if session[:user_id] %>
+<nav class="navbar navbar-default">
+	<div class='navbar-header'>
+		<ul>
+			<a href="" class="navbar-brand"></a>
+      	</ul>
+	</div>
+	<ul class="nav navbar-nav pull-right">
+		
+      	<li>
+      		<form action='/sessions ' method='post'>
+				<input type='hidden' name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type='hidden' name="_method" value="delete">
+				<input type='submit' value='Log Out' class='btn-danger form-control'>
+			</form>
+      	</li>
+    </ul>
+</nav>
+
+
+<% else %>
+<nav class="navbar navbar-default">
+	<span class="navbar-brand">Welcome!</span>
+</nav>
+<% end %>
+
+<!-- flash error messages if present -->
+<% if flash[:errors] %>
+	<% flash[:errors].each do |e| %>
+		<p><%= e %></p>
+	<% end %>
+<% end %>
+
+<%= yield %>
+
+</div>
+</body>
+</html>

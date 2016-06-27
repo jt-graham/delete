@@ -1,0 +1,24 @@
+<div class="col-md-5">
+<h1>Sign In</h1>
+	<form action="/sessions" method="post">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	    <table>
+	    <tr>
+	      	<td>Email:</td>
+	      	<td><input id="email" type="email" name="email" placeholder="Enter email"></td>
+	    </tr>
+	    <tr>
+	      	<td>Password:</td>
+	      	<td><input id="password" type="password" name="password" placeholder="Enter password"></td>
+	    </tr>
+	    <tr>
+	      	<td></td>
+	      	<td><input class="btn-primary" type="submit" value="Login"></td>
+	    </tr>
+	    <tr>
+	    	<td></td>
+	    	<td><%= link_to 'Click here to register', online_lending_register_path %></td>
+	    </tr>
+	  	</table>
+	</form>
+</div>

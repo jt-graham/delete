@@ -1,0 +1,86 @@
+<div class="col-md-5">
+    <h1>Lender</h1>
+    <form action="/online_lending/lender" method="post">
+    	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      	<table>
+        <tr>
+          	<td>First Name:</td>
+          	<td><input class='form-control'id="first_name" type="text" name="lender[first_name]" placeholder="Enter name"></td>
+        </tr>
+        <tr>
+          	<td>Last Name:</td>
+          	<td><input class='form-control'id="last_name" type="text" name="lender[last_name]" placeholder="Enter name"></td>
+        </tr>
+        <tr>
+          	<td>Email:</td>
+          	<td><input class='form-control'id="email" type="email" name="lender[email]" placeholder="Enter email"></td>
+        </tr>
+        <tr>
+          	<td>Money:</td>
+          	<td><input class='form-control'id="money" type="number" name="lender[money]" placeholder="Enter Amount"></td>
+        </tr>
+        <tr>
+          	<td>Password:</td>
+          	<td><input class='form-control'id="password" type="password" name="lender[password]" placeholder="Enter a Password"></td>
+        </tr>
+        <tr>
+          	<td>Confirm Password:</td>
+          	<td><input class='form-control'id="password_confirmation" type="password" name="lender[password_confirmation]" placeholder="Enter password again"></td>
+        </tr>
+        <tr>
+          	<td><%= link_to 'Already a Member?', online_lending_login_path %></td>
+          	<td><input class="btn-primary form-control" type="submit" value="Register"></td>
+          	<tr><td><h6>*Password should be at least 8 characters</h6></td></tr>
+        </tr>
+      	</table>
+    </form>
+</div>
+<div class="col-md-5">
+    <h1>Borrower</h1>
+    <form action="/online_lending/borrower" method="post">
+    	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      	<table>
+        <tr>
+          	<td>First Name:</td>
+          	<td><input class='form-control'id="first_name" type="text" name="borrower[first_name]" placeholder="Enter name"></td>
+        </tr>
+        <tr>
+          	<td>Last Name:</td>
+          	<td><input class='form-control'id="last_name" type="text" name="borrower[last_name]" placeholder="Enter name"></td>
+        </tr>
+        <tr>
+          	<td>Email:</td>
+          	<td><input class='form-control'id="email" type="email" name="borrower[email]" placeholder="Enter email"></td>
+        </tr>
+        <tr>
+          	<td>Password:</td>
+          	<td><input class='form-control'id="password" type="password" name="borrower[password]" placeholder="Enter password"></td>
+        </tr>
+        <tr>
+          	<td>Confirm Password:</td>
+          	<td><input class='form-control'id="password_confirmation" type="password" name="borrower[password_confirmation]" placeholder="Enter password again"></td>
+        </tr>
+        <tr>
+          	<td>Need Money For:</td>
+          	<td><input class='form-control'id="purpose" type="text" name="borrower[purpose]" placeholder="Enter Purpose of Loan"></td>
+        </tr>
+        <tr>
+          	<td>Description:</td>
+          	<td><textarea class='form-control' id="description" type="text" name="borrower[description]" placeholder="Please describe purpose"></textarea></td>
+        </tr>
+        <tr>
+          	<td>Current Account Balance:</td>
+          	<td><input class='form-control'id="need" type="number" name="borrower[money]" placeholder="Enter Starting Amount"></td>
+        </tr>
+        <tr>
+          	<td>Total Amount Needed:</td>
+          	<td><input class='form-control'id="need" type="number" name="borrower[need]" placeholder="Enter Amount needed"></td>
+        </tr>
+        <tr>
+          	<td><%= link_to 'Already a Member?', online_lending_login_path %></td>
+          	<td><input class="btn-primary form-control" type="submit" value="Register"></td>
+          	<tr><td><h6>*Password should be at least 8 characters</h6></td></tr>
+        </tr>
+      	</table>
+    </form>
+</div>
